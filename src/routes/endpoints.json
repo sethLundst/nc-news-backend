@@ -1,0 +1,172 @@
+{
+  "GET /": {
+    "description": "Requests JSON representation of all API endpoints."
+  },
+  "GET /articles": {
+    "description": "Requests array of all article objects.",
+    "queries": ["limit", "order", "p", "sort_by", "author", "topic"],
+    "exampleResponse": {
+      "articles": [
+        {
+          "article_id": 9,
+          "author": "butter_bridge",
+          "title": "They're not exactly dogs, are they?",
+          "votes": 0,
+          "topic": "mitch",
+          "created_at": "2020-06-06T09:10:00.000Z",
+          "comment_count": "2"
+        }
+      ],
+      "total_count": 1
+    }
+  },
+  "GET /articles/:article_id": {
+    "description": "Requests specific article object.",
+    "queries": [],
+    "exampleResponse": {
+      "article": {
+        "article_id": 9,
+        "author": "butter_bridge",
+        "title": "They're not exactly dogs, are they?",
+        "votes": 0,
+        "topic": "mitch",
+        "created_at": "2020-06-06T09:10:00.000Z",
+        "comment_count": "2"
+      }
+    }
+  },
+  "GET /articles/:article_id/comments": {
+    "description": "Requests array of comments for specific article.",
+    "queries": ["limit, p"],
+    "exampleResponse": {
+      "comments": [
+        {
+          "body": "The owls are not what they seem.",
+          "votes": 20,
+          "author": "icellusedkars",
+          "created_at": "2020-03-14T17:02:00.000Z",
+          "comment_id": 17
+        }
+      ]
+    }
+  },
+  "GET /comments/": {
+    "description": "Requests array of all comment objects.",
+    "queries": ["p", "limit"],
+    "exampleResponse": {
+      "comments": [
+        {
+          "comment_id": 16,
+          "author": "butter_bridge",
+          "article_id": 6,
+          "votes": 1,
+          "created_at": "2020-10-11T15:23:00.000Z",
+          "body": "This is a bad article name"
+        }
+      ]
+    }
+  },
+  "GET /topics": {
+    "description": "Requests array of all topic objects.",
+    "queries": [],
+    "exampleResponse": {
+      "topics": [{ "slug": "football", "description": "Footie!" }]
+    }
+  },
+  "GET /users/": {
+    "description": "Requests array of all user objects.",
+    "queries": [],
+    "exampleResponse": {
+      "users": [{ "username": "lurker" }]
+    }
+  },
+  "GET /users/:username": {
+    "description": "Requests specific user object.",
+    "queries": [],
+    "exampleResponse": {
+      "user": [{ "username": "lurker" }]
+    }
+  },
+  "POST /articles": {
+    "description": "Sends article to the server and requests newly added article.",
+    "queries": [],
+    "exampleResponse": {
+      "article": {
+        "author": "rogersop",
+        "title": "Nightmail",
+        "body": "This is the night mail crossing the Border.",
+        "topic": "cats",
+        "article_id": 13,
+        "votes": 0,
+        "created_at": "2020-10-11T15:23:00.000Z",
+        "comment_count": "0"
+      }
+    }
+  },
+  "POST /articles/:article_id/comments": {
+    "description": "Sends comment to the server and requests newly added comment.",
+    "queries": [],
+    "exampleRequest": {
+      "username": "rogersop",
+      "body": "Bringing the cheque and the postal order."
+    },
+    "exampleResponse": {
+      "comment_id": 19,
+      "author": "rogersop",
+      "article_id": 1,
+      "votes": 0,
+      "created_at": "2020-10-11T15:23:00.000Z",
+      "body": "Bringing the cheque and the postal order."
+    }
+  },
+  "POST /topics": {
+    "description": "Sends topic to the server and requests newly added topic.",
+    "queries": [],
+    "exampleRequest": {
+      "slug": "topic_name_here",
+      "description": "description here"
+    },
+    "exampleResponse": {
+      "slug": "topic_name_here",
+      "description": "description here"
+    }
+  },
+  "PATCH /articles/:article_id": {
+    "description": "Requests article updated with incremented/decremented votes.",
+    "queries": [],
+    "exampleRequest": { "inc_votes": 25 },
+    "exampleResponse": {
+      "article_id": 3,
+      "author": "icellusedkars",
+      "title": "Eight pug gifs that remind me of mitch",
+      "votes": 25,
+      "topic": "mitch",
+      "created_at": "2020-11-03T09:12:00.000Z",
+      "body": "some gifs",
+      "comment_count": "2"
+    }
+  },
+  "PATCH /comments/:comment_id": {
+    "description": "Requests comment updated with incremented/decremented votes.",
+    "queries": [],
+    "exampleRequest": { "inc_votes": 25 },
+    "exampleResponse": {
+      "comment_id": 3,
+      "body": "Replacing the quiet elegance of the dark suit and tie with the casual indifference of these muted earth tones is a form of fashion suicide, but, uh, call me crazy — onyou it works.",
+      "votes": 125,
+      "author": "icellusedkars",
+      "article_id": 1,
+      "created_at": "2020-03-01T01:13:00.000Z"
+    }
+  },
+  "DELETE /articles/:article_id": {
+    "description": "Deletes requested article and responds with no content.",
+    "queries": [],
+    "exampleResponse": { "Msg": 204 }
+  },
+  "DELETE /comments/:comment_id": {
+    "description": "Deletes requested comment and responds with no content.",
+    "queries": [],
+    "exampleResponse": { "Msg": 204 }
+  }
+}
