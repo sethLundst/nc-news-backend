@@ -12,6 +12,10 @@ exports.selectLikesByUser = async (username) => {
 };
 
 exports.insertLikeByUser = async (username, article_id, like_dislike) => {
+  await db.query(`DELETE FROM likes WHERE username = $1 AND article_id = $2;`, [
+    username,
+    article_id,
+  ]);
   const result = await db.query(
     `INSERT INTO likes (username, article_id, like_dislike) 
     VALUES ($1, $2, $3) RETURNING *;`,
