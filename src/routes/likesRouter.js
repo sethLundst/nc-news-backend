@@ -6,10 +6,8 @@ const {
 
 const likesRouter = require("express").Router();
 
-likesRouter
-  .route("/:username")
-  .get(getLikesByUser)
-  .post(postLikeByUser)
-  .delete(deleteLikeByUser);
+likesRouter.route("/:username").get(getLikesByUser).post(postLikeByUser);
+
+likesRouter.route("/:username/:id").delete(deleteLikeByUser);
 
 module.exports = likesRouter;

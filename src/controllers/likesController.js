@@ -28,12 +28,11 @@ exports.postLikeByUser = async (req, res, next) => {
 };
 
 exports.deleteLikeByUser = async (req, res, next) => {
-  console.log(req);
-  const { username } = req.params;
-  const { article_id } = req.body.data;
+  console.log(req.params);
+  const { username, id } = req.params;
 
   try {
-    const result = await removeLikeByUser(username, article_id);
+    const result = await removeLikeByUser(username, id);
     if (result.length === 0) {
       res.status(204).send({});
     }
