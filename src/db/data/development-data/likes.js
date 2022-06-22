@@ -6,7 +6,7 @@ module.exports = [
   },
   {
     username: "jessjelly",
-    article_id: 2,
+    article_id: 3,
     like_dislike: 0,
   },
 ];
