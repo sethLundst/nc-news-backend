@@ -985,7 +985,7 @@ describe("DELETE /comments/:comment_id", () => {
   });
 });
 
-describe("DELETE /likes/:likes_id", () => {
+describe("DELETE /likes/:username", () => {
   test("204 No Content: Deletes requested like/dislike and responds with no content.", async () => {
     const { body } = await request(app)
       .delete("/likes/lurker")
