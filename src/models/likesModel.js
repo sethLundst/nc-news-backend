@@ -29,6 +29,12 @@ exports.removeLikeByUser = async (username, article_id) => {
     username,
     article_id,
   ]);
+  const result2 = await db.query(
+    format(
+      `SELECT article_id, like_dislike FROM likes WHERE username = %L;`,
+      username
+    )
+  );
   const result = await db.query(
     `SELECT FROM likes WHERE username = $1 AND article_id = $2;`,
     [username, article_id]

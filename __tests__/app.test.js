@@ -991,6 +991,7 @@ describe("DELETE /likes/:username", () => {
       .delete("/likes/lurker")
       .send({ article_id: 2 })
       .expect(204);
+    console.log(body);
     expect(body.msg).toBe(undefined);
   });
 });

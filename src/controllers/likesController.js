@@ -29,7 +29,7 @@ exports.postLikeByUser = async (req, res, next) => {
 
 exports.deleteLikeByUser = async (req, res, next) => {
   const { username } = req.params;
-  const { article_id } = req.body;
+  const { article_id } = req.data;
   try {
     const result = await removeLikeByUser(username, article_id);
     if (result.length === 0) {
