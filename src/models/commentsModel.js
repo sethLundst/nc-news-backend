@@ -18,6 +18,9 @@ exports.updateCommentByID = async (comment_id, inc_votes) => {
 };
 
 exports.removeCommentByID = async (comment_id) => {
+  await db.query("DELETE FROM comment_votes WHERE comment_id = $1", [
+    comment_id,
+  ]);
   await db.query(`DELETE FROM comments WHERE comment_id = $1;`, [comment_id]);
   const result = await db.query(`SELECT FROM comments WHERE comment_id = $1;`, [
     comment_id,

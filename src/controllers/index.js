@@ -12,13 +12,18 @@ const {
   patchCommentByID,
   deleteCommentByID,
 } = require("./commentsController");
+
 const { getTopics, postTopic } = require("./topicsController");
+
 const { getUsers, getUserByUsername } = require("./usersController");
+
 const {
-  getLikesByUser,
-  postLikeByUser,
-  deleteLikeByUser,
-} = require("./likesController");
+  getVotesByUser,
+  postArticleVoteByUser,
+  postCommentVoteByUser,
+  deleteArticleVoteByUser,
+  deleteCommentVoteByUser,
+} = require("./votesController");
 
 module.exports = {
   getArticles,
@@ -28,14 +33,16 @@ module.exports = {
   getTopics,
   getUsers,
   getUserByUsername,
-  getLikesByUser,
+  getVotesByUser,
   postArticle,
   postCommentByArticleID,
   postTopic,
-  postLikeByUser,
+  postArticleVoteByUser,
+  postCommentVoteByUser,
   patchArticleByID,
   patchCommentByID,
   deleteArticleByID,
   deleteCommentByID,
-  deleteLikeByUser,
+  deleteArticleVoteByUser,
+  deleteCommentVoteByUser,
 };

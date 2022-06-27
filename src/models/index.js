@@ -15,12 +15,16 @@ const {
 } = require("./commentsModel");
 
 const { selectTopics, insertTopic } = require("./topicsModel");
+
 const { selectUsers, selectUserByUsername } = require("./usersModel");
+
 const {
-  selectLikesByUser,
-  insertLikeByUser,
-  removeLikeByUser,
-} = require("./likesModel");
+  selectVotesByUser,
+  insertArticleVoteByUser,
+  insertCommentVoteByUser,
+  removeArticleVoteByUser,
+  removeCommentVoteByUser,
+} = require("./votesModel");
 
 module.exports = {
   selectArticles,
@@ -30,16 +34,18 @@ module.exports = {
   selectUserByUsername,
   selectTopics,
   selectUsers,
-  selectLikesByUser,
+  selectVotesByUser,
   insertArticle,
   insertCommentByArticleID,
   insertTopic,
-  insertLikeByUser,
+  insertArticleVoteByUser,
+  insertCommentVoteByUser,
   updateArticleByID,
   updateCommentByID,
   removeArticleByID,
   removeCommentByID,
-  removeLikeByUser,
+  removeArticleVoteByUser,
+  removeCommentVoteByUser,
 };
 
 //

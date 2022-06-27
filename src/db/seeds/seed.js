@@ -10,10 +10,18 @@ function getValues(data) {
 }
 
 async function seed(data) {
-  const { articleData, commentData, likesData, topicData, userData } = data;
+  const {
+    articleData,
+    commentData,
+    topicData,
+    userData,
+    articleVotesData,
+    commentVotesData,
+  } = data;
 
+  await db.query("DROP TABLE IF EXISTS article_votes;");
+  await db.query("DROP TABLE IF EXISTS comment_votes");
   await db.query("DROP TABLE IF EXISTS comments;");
-  await db.query("DROP TABLE IF EXISTS likes;");
   await db.query("DROP TABLE IF EXISTS articles;");
   await db.query("DROP TABLE IF EXISTS users;");
   await db.query("DROP TABLE IF EXISTS topics;");
@@ -44,11 +52,16 @@ async function seed(data) {
     created_at TIMESTAMP DEFAULT NOW () NOT NULL,
     body TEXT NOT NULL
     );`);
-  await db.query(`CREATE TABLE likes (
+  await db.query(`CREATE TABLE article_votes (
     username VARCHAR (30) REFERENCES users(username) NOT NULL,
     article_id INT REFERENCES articles(article_id) NOT NULL,
-    like_dislike INT DEFAULT 0 NOT NULL
+    downvote_upvote INT DEFAULT 0 NOT NULL
     );`);
+  await db.query(`CREATE TABLE comment_votes (
+      username VARCHAR (30) REFERENCES users(username) NOT NULL,
+      comment_id INT REFERENCES comments(comment_id) NOT NULL,
+      downvote_upvote INT DEFAULT 0 NOT NULL
+      );`);
   await db.query(
     format(
       `INSERT INTO topics (description, slug) VALUES %L`,
@@ -75,8 +88,14 @@ async function seed(data) {
   );
   await db.query(
     format(
-      `INSERT INTO likes (username, article_id, like_dislike) VALUES %L`,
-      getValues(likesData)
+      `INSERT INTO article_votes (username, article_id, downvote_upvote) VALUES %L`,
+      getValues(articleVotesData)
+    )
+  );
+  await db.query(
+    format(
+      `INSERT INTO comment_votes (username, comment_id, downvote_upvote) VALUES %L`,
+      getValues(commentVotesData)
     )
   );
 }

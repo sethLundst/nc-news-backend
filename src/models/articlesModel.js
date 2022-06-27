@@ -93,7 +93,9 @@ exports.updateArticleByID = async (article_id, inc_votes) => {
 };
 
 exports.removeArticleByID = async (article_id) => {
-  await db.query("DELETE FROM likes WHERE article_id = $1", [article_id]);
+  await db.query("DELETE FROM article_votes WHERE article_id = $1", [
+    article_id,
+  ]);
   await db.query("DELETE FROM articles WHERE article_id = $1", [article_id]);
   const result = await db.query(`SELECT FROM articles WHERE article_id = $1`, [
     article_id,

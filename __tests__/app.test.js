@@ -646,31 +646,56 @@ describe("GET /users/:username", () => {
   });
 });
 
-describe("GET /likes/:username", () => {
-  test("200 OK: Responds with liked/disliked articles for specific user.", async () => {
-    const { body } = await request(app).get("/likes/lurker").expect(200);
-    const { likes } = body;
-    expect(likes).toEqual([
-      { article_id: 1, like_dislike: 1 },
-      { article_id: 2, like_dislike: 0 },
-    ]);
+describe("GET /votes/:username", () => {
+  test("200 OK: Responds with downvoted/upvoted articles and comments for specific user.", async () => {
+    const { body } = await request(app).get("/votes/lurker").expect(200);
+    const { votes } = body;
+    expect(votes).toEqual({
+      articleVotes: [
+        { article_id: 1, downvote_upvote: 1 },
+        { article_id: 2, downvote_upvote: 0 },
+      ],
+      commentVotes: [
+        { comment_id: 5, downvote_upvote: 0 },
+        { comment_id: 6, downvote_upvote: 1 },
+      ],
+    });
+  });
+  test("404 Not Found: Responds with error if username does not exist in database.", async () => {
+    const { body } = await request(app).get("/votes/dog").expect(404);
+    expect(body.msg).toEqual("Not Found: User does not exist.");
   });
 });
 
-describe("POST /likes/:username", () => {
-  test("201 Created: Inserts like/dislike into database and responds with newly add like/dislike.", async () => {
+describe("POST /votes/:item/:username", () => {
+  test("201 Created: Inserts vote into articles table and responds with newly add vote.", async () => {
     const { body } = await request(app)
-      .post("/likes/lurker")
+      .post("/votes/lurker/articles")
       .send({
         article_id: 1,
-        like_dislike: 1,
+        downvote_upvote: 1,
       })
       .expect(201);
-    const { like } = body;
-    expect(like).toEqual({
+    const { vote } = body;
+    expect(vote).toEqual({
       username: "lurker",
       article_id: 1,
-      like_dislike: 1,
+      downvote_upvote: 1,
+    });
+  });
+  test("201 Created: Inserts vote into comments tabgle and responds with newly add vote.", async () => {
+    const { body } = await request(app)
+      .post("/votes/lurker/comments")
+      .send({
+        comment_id: 5,
+        downvote_upvote: 0,
+      })
+      .expect(201);
+    const { vote } = body;
+    expect(vote).toEqual({
+      username: "lurker",
+      comment_id: 5,
+      downvote_upvote: 0,
     });
   });
 });
@@ -985,10 +1010,25 @@ describe("DELETE /comments/:comment_id", () => {
   });
 });
 
-describe("DELETE /likes/:username", () => {
-  test("204 No Content: Deletes specific like/dislike and responds with no content.", async () => {
-    const { body } = await request(app).delete("/likes/lurker/2").expect(204);
-    console.log(body);
+describe("DELETE /votes/:username", () => {
+  test("204 No Content: Deletes specific article vote and responds with no content.", async () => {
+    const { body } = await request(app)
+      .delete("/votes/lurker/2/articles")
+      .expect(204);
     expect(body.msg).toBe(undefined);
+  });
+  test("204 No Content: Deletes specific comment vote and responds with no content.", async () => {
+    const { body } = await request(app)
+      .delete("/votes/lurker/5/comments")
+      .expect(204);
+    expect(body.msg).toBe(undefined);
+  });
+  test("204 No Content: Delete request works if all votes are deleted.", async () => {
+    await request(app).delete("/votes/lurker/2/articles").expect(204);
+    const { body } = await request(app)
+      .delete("/votes/lurker/1/articles")
+      .expect(204);
+    expect(body.msg).toBe(undefined);
+    console.log(body);
   });
 });

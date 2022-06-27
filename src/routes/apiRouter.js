@@ -3,7 +3,7 @@ const articlesRouter = require("./articlesRouter");
 const commentsRouter = require("./commentsRouter");
 const topicsRouter = require("./topicsRouter");
 const usersRouter = require("./usersRouter");
-const likesRouter = require("./likesRouter");
+const votesRouter = require("./votesRouter");
 const fs = require("fs").promises;
 
 apiRouter
@@ -11,7 +11,7 @@ apiRouter
   .use("/comments", commentsRouter)
   .use("/topics", topicsRouter)
   .use("/users", usersRouter)
-  .use("/likes", likesRouter);
+  .use("/votes", votesRouter);
 
 apiRouter.get("/", async function getAPI(_req, res) {
   const data = await fs.readFile("./src/routes/endpoints.json");
