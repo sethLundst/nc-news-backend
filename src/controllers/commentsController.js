@@ -4,7 +4,7 @@ const {
   removeCommentByID,
 } = require("../models/index");
 
-const { checkExists } = require("../errors/index");
+const { checkExists } = require("../errors");
 
 exports.getComments = async (req, res, next) => {
   const { limit, p } = req.query;

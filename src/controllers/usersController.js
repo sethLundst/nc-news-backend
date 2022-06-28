@@ -1,6 +1,6 @@
 const { selectUsers, selectUserByUsername } = require("../models/index");
 
-const { checkExists } = require("../errors/index");
+const { checkExists } = require("../errors");
 
 exports.getUsers = async (_req, res, next) => {
   try {

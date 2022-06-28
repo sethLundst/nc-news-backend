@@ -60,7 +60,7 @@ exports.removeArticleVoteByUser = async (username, article_id) => {
     [username, article_id]
   );
   const result = await db.query(
-    `SELECT FROM article_votes WHERE username = $1 AND article_id = $2;`,
+    `SELECT * FROM article_votes WHERE username = $1 AND article_id = $2;`,
     [username, article_id]
   );
   return result.rows;
@@ -72,19 +72,7 @@ exports.removeCommentVoteByUser = async (username, comment_id) => {
     [username, comment_id]
   );
   const result = await db.query(
-    `SELECT FROM comment_votes WHERE username = $1 AND comment_id = $2;`,
-    [username, comment_id]
-  );
-  return result.rows;
-};
-
-exports.removeCommentVoteByUser = async (username, comment_id) => {
-  await db.query(
-    `DELETE FROM comment_votes WHERE username = $1 AND comment_id = $2;`,
-    [username, comment_id]
-  );
-  const result = await db.query(
-    `SELECT FROM comment_votes WHERE username = $1 AND comment_id = $2;`,
+    `SELECT * FROM comment_votes WHERE username = $1 AND comment_id = $2;`,
     [username, comment_id]
   );
   return result.rows;

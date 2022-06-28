@@ -97,9 +97,10 @@ exports.removeArticleByID = async (article_id) => {
     article_id,
   ]);
   await db.query("DELETE FROM articles WHERE article_id = $1", [article_id]);
-  const result = await db.query(`SELECT FROM articles WHERE article_id = $1`, [
-    article_id,
-  ]);
+  const result = await db.query(
+    `SELECT * FROM articles WHERE article_id = $1`,
+    [article_id]
+  );
 
   return result.rows;
 };

@@ -50,6 +50,7 @@ exports.postCommentVoteByUser = async (req, res, next) => {
 
 exports.deleteArticleVoteByUser = async (req, res, next) => {
   const { username, article_id } = req.params;
+  await checkExists("article_votes", "article_id", article_id);
   try {
     const result = await removeArticleVoteByUser(username, article_id);
     if (result.length === 0) {
@@ -62,6 +63,7 @@ exports.deleteArticleVoteByUser = async (req, res, next) => {
 
 exports.deleteCommentVoteByUser = async (req, res, next) => {
   const { username, comment_id } = req.params;
+  await checkExists("comment_votes", "comment_id", comment_id);
   try {
     const result = await removeCommentVoteByUser(username, comment_id);
     if (result.length === 0) {

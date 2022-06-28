@@ -1012,10 +1012,10 @@ describe("DELETE /comments/:comment_id", () => {
 
 describe("DELETE /votes/:username/:id/:item", () => {
   test("204 No Content: Deletes specific article vote and responds with no content.", async () => {
-    const { body } = await request(app)
+    const { votes } = await request(app)
       .delete("/votes/lurker/2/articles")
       .expect(204);
-    expect(body.msg).toBe(undefined);
+    expect(votes).toBe(undefined);
   });
   test("204 No Content: Deletes specific comment vote and responds with no content.", async () => {
     const { body } = await request(app)

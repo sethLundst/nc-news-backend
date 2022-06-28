@@ -14,8 +14,12 @@ votesRouter.route("/:username/articles").post(postArticleVoteByUser);
 
 votesRouter.route("/:username/comments").post(postCommentVoteByUser);
 
-votesRouter.route("/:username/:id/articles").delete(deleteArticleVoteByUser);
+votesRouter
+  .route("/:username/:article_id/articles")
+  .delete(deleteArticleVoteByUser);
 
-votesRouter.route("/:username/:id/comments").delete(deleteCommentVoteByUser);
+votesRouter
+  .route("/:username/:comment_id/comments")
+  .delete(deleteCommentVoteByUser);
 
 module.exports = votesRouter;

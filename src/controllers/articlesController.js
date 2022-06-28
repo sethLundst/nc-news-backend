@@ -8,7 +8,7 @@ const {
   removeArticleByID,
 } = require("../models/index");
 
-const { checkExists } = require("../errors/index");
+const { checkExists } = require("../errors");
 
 exports.getArticles = async (req, res, next) => {
   const { sort_by, order, topic, author, limit, p } = req.query;
