@@ -667,7 +667,7 @@ describe("GET /votes/:username", () => {
   });
 });
 
-describe("POST /votes/:item/:username", () => {
+describe("POST /votes/:username/:item", () => {
   test("201 Created: Inserts vote into articles table and responds with newly add vote.", async () => {
     const { body } = await request(app)
       .post("/votes/lurker/articles")
@@ -1010,7 +1010,7 @@ describe("DELETE /comments/:comment_id", () => {
   });
 });
 
-describe("DELETE /votes/:username", () => {
+describe("DELETE /votes/:username/:id/:item", () => {
   test("204 No Content: Deletes specific article vote and responds with no content.", async () => {
     const { body } = await request(app)
       .delete("/votes/lurker/2/articles")

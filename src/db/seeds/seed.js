@@ -19,10 +19,10 @@ async function seed(data) {
     commentVotesData,
   } = data;
 
-  await db.query("DROP TABLE IF EXISTS comments;");
-  await db.query("DROP TABLE IF EXISTS articles;");
   await db.query("DROP TABLE IF EXISTS article_votes;");
   await db.query("DROP TABLE IF EXISTS comment_votes");
+  await db.query("DROP TABLE IF EXISTS comments;");
+  await db.query("DROP TABLE IF EXISTS articles;");
   await db.query("DROP TABLE IF EXISTS users;");
   await db.query("DROP TABLE IF EXISTS topics;");
 
