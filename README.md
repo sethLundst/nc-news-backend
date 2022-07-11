@@ -4,7 +4,7 @@ News aggregation website for Northcoders, built with React and PostgreSQL.
 
 Frontend repo: https://github.com/sethLundst/northcoders-news
 
-Deployed version: https://nc-news-backend-heroku.herokuapp.com/
+Deployed version: https://nc-news-lundst.herokuapp.com/
 
 ## Run Locally
 
