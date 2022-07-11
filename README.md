@@ -12,19 +12,19 @@ Requires **Node v16.x** and **PostgreSQL v14.x**
 
 Clone and navigate to repository:
 
-    # git clone https://github.com/sethLundst/nc-news-backend.git
-    # cd nc-news-backend
+    # git clone https://github.com/sethLundst/northcoders-news-server.git
+    # cd northcoders-news-server
 
 Create environment variables in src folder:
 
 <pre>
-<i>nc-news-backend/src/.env.test</i>
+<i>northcoders-news-server/src/.env.test</i>
 
 <code>PGDATABASE=nc_news_test</code>
 </pre>
 
 <pre>
-<i>nc-news-backend/src/.env.development</i>
+<i>northcoders-news-server/src/.env.development</i>
 
 <code>PGDATABASE=nc_news</code>
 </pre>
