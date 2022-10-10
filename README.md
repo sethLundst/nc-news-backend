@@ -1,4 +1,4 @@
-## Northcoders News (Backend) ![Heroku](https://pyheroku-badge.herokuapp.com/?app=nc-news-lundst&style=plastic) 
+## Northcoders News (backend) ![Heroku](https://pyheroku-badge.herokuapp.com/?app=nc-news-lundst&style=plastic) 
 ##### Go to [frontend repository](https://github.com/sethLundst/nc-news-frontend)
 ![](https://badges.aleen42.com/src/javascript.svg)
 
