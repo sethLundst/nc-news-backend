@@ -1,4 +1,6 @@
 ## Northcoders News (Backend) ![Heroku](https://pyheroku-badge.herokuapp.com/?app=nc-news-lundst&style=plastic) 
+![](https://badges.aleen42.com/src/javascript.svg)
+
 
 RESTful web API for Northcoders News. Use the link below, or follow the instructions to run locally.
 
