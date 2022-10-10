@@ -1,16 +1,8 @@
 ## Northcoders News (Backend) ![Heroku](https://pyheroku-badge.herokuapp.com/?app=nc-news-lundst&style=plastic) 
 ![](https://badges.aleen42.com/src/javascript.svg)
+##### Go to [frontend repository](https://github.com/sethLundst/nc-news-frontend)
 
-
-RESTful web API for Northcoders News. Use the link below, or follow the instructions to run locally.
-
-Frontend repo: https://github.com/sethLundst/nc-news-frontend
-
-Visit [Northcoders News](https://news-northcoders.netlify.app)
-
-Link to backend API: https://nc-news-lundst.herokuapp.com/
-
-Link to [frontend repository](https://github.com/sethLundst/nc-news-frontend)
+RESTful web API for [Northcoders News](https://news-northcoders.netlify.app), a news aggregation website built for Northcoders' full-stack software developer bootcamp. Visit the API [here](https://nc-news-lundst.herokuapp.com/), or follow the instructions to run locally.
 
 ## Run Locally
 
