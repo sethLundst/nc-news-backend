@@ -1,10 +1,14 @@
-# Northcoders News ![Heroku](https://pyheroku-badge.herokuapp.com/?app=nc-news-lundst&style=plastic) 
+## Northcoders News (Backend) ![Heroku](https://pyheroku-badge.herokuapp.com/?app=nc-news-lundst&style=plastic) 
 
-News aggregation website for Northcoders, built with React and PostgreSQL.
+RESTful web API for Northcoders News. Use the link below, or follow the instructions to run locally.
 
 Frontend repo: https://github.com/sethLundst/nc-news-frontend
 
-Deployed version: https://nc-news-lundst.herokuapp.com/
+Visit [Northcoders News](https://news-northcoders.netlify.app)
+
+Link to backend API: https://nc-news-lundst.herokuapp.com/
+
+Link to [frontend repository](https://github.com/sethLundst/nc-news-frontend)
 
 ## Run Locally
 
